@@ -1447,9 +1447,21 @@ skip_policy_enforcement:
 #endif /* ENABLE_DSR */
 
 	if (ret == CT_NEW) {
+#ifdef ENABLE_NODEPORT
+		{
+			int prev_flags = tuple.flags;
+			struct ct_entry *entry;
+
+			tuple.flags = TUPLE_F_OUT;
+			entry = map_lookup_elem(get_ct_map4(&tuple), &tuple);
+			if (entry != NULL) {
+				ct_state_new.node_port = entry->node_port;
+				ct_state_new.ifindex = entry->ifindex;
+			}
+			tuple.flags = prev_flags;
+		}
+#endif
 		ct_state_new.src_sec_id = src_label;
-		ct_state_new.node_port = ct_state.node_port;
-		ct_state_new.ifindex = ct_state.ifindex;
 		ret = ct_create4(get_ct_map4(&tuple), &CT_MAP_ANY4, &tuple, ctx, CT_INGRESS,
 				 &ct_state_new, verdict > 0);
 		if (IS_ERR(ret))

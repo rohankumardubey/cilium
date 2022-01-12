@@ -1800,6 +1800,7 @@ redo_all:
 					 CT_EGRESS, &ct_state_new, false);
 			if (IS_ERR(ret))
 				return ret;
+#if 0
 			if (backend_local) {
 				ct_flip_tuple_dir4(&tuple);
 redo_local:
@@ -1813,6 +1814,7 @@ redo_local:
 				if (IS_ERR(ret))
 					return ret;
 			}
+#endif
 			break;
 		case CT_REOPENED:
 		case CT_ESTABLISHED:
@@ -1823,6 +1825,7 @@ redo_local:
 			if (unlikely(ct_state.rev_nat_index !=
 				     svc->rev_nat_index))
 				goto redo_all;
+#if 0
 			if (backend_local) {
 				ct_flip_tuple_dir4(&tuple);
 				if (!__ct_entry_keep_alive(get_ct_map4(&tuple),
@@ -1833,6 +1836,7 @@ redo_local:
 					goto redo_local;
 				}
 			}
+#endif
 			break;
 		default:
 			return DROP_UNKNOWN_CT;
