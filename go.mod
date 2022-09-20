@@ -18,7 +18,7 @@ require (
 	github.com/blang/semver/v4 v4.0.0
 	github.com/cilium/customvet v0.0.0-20201209211516-9852765c1ac4
 	github.com/cilium/deepequal-gen v0.0.0-20200406125435-ad6a9003139e
-	github.com/cilium/ebpf v0.7.0
+	github.com/cilium/ebpf v0.9.2
 	github.com/cilium/ipam v0.0.0-20211026130907-54a76012817c
 	github.com/cilium/proxy v0.0.0-20210511221533-82a70d56bf32
 	github.com/cilium/workerpool v1.1.1
@@ -78,7 +78,7 @@ require (
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519
 	golang.org/x/net v0.0.0-20211101193420-4a448f8816b3
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
-	golang.org/x/sys v0.0.0-20211210111614-af8b64212486
+	golang.org/x/sys v0.0.0-20220829200755-d48e67d00261
 	golang.org/x/time v0.0.0-20210723032227-1f47c861a9ac
 	golang.org/x/tools v0.1.8
 	golang.zx2c4.com/wireguard v0.0.0-20211017052713-f87e87af0d9a
